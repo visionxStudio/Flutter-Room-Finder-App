@@ -8,6 +8,7 @@ class MinimalInputField extends StatefulWidget {
     required this.hintText,
     this.textInputType,
     this.focusNode,
+    this.isPassword = false,
     this.textEditingController,
     this.autofocus,
     this.maxLines,
@@ -18,6 +19,7 @@ class MinimalInputField extends StatefulWidget {
   final FocusNode? focusNode;
   final bool? autofocus;
   final int? maxLines;
+  final bool isPassword;
 
   @override
   _MinimalInputFieldState createState() => _MinimalInputFieldState();
@@ -41,11 +43,12 @@ class _MinimalInputFieldState extends State<MinimalInputField> {
                   color: kWhiteColor, borderRadius: BorderRadius.circular(8.0)),
               margin: const EdgeInsets.only(bottom: kDefaultPadding - 5),
               child: TextField(
+                obscureText: widget.isPassword,
                 autofocus: widget.autofocus ?? false,
                 focusNode: widget.focusNode,
                 onTap: () {},
                 controller: widget.textEditingController,
-                maxLines: widget.maxLines,
+                maxLines: widget.isPassword ? 1 : widget.maxLines,
                 decoration: InputDecoration(
                     hintText: widget.hintText,
                     hintStyle: const TextStyle(

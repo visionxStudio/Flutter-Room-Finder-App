@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomfinder/src/common/constants/constants.dart';
+import 'package:roomfinder/src/common/utils/app_size_utils.dart';
 
 import 'widgets/custom_clippers/index.dart';
 import 'widgets/header.dart';
@@ -95,6 +96,8 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    // TODO Remove this from here and put it in splash screen
+    SizeConfig().init(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: kScafoldColor,
@@ -141,12 +144,10 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
               padding: const EdgeInsets.symmetric(vertical: 32.0),
               child: Column(
                 children: <Widget>[
-                  // TODO Change the header to match original one
                   Header(animation: _headerTextAnimation),
                   const Spacer(),
                   const Spacer(),
                   LoginForm(animation: _formElementAnimation),
-                  const Spacer(),
                 ],
               ),
             ),

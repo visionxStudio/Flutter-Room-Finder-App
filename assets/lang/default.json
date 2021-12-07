@@ -1,5 +1,19 @@
 {
     "splash_page" : {
         "welcome" : "Welcome to Room Finder"
+    },
+
+    "login_page"  : { 
+        "continue" : "Continue",
+        "no_account" : "Don't have account? Register",
+        "google": "Continue with  Google",
+        "facebook" : "Continue With Facebook",
+        "password_rule1" : "At least 8 characters • At least 1 numerical",
+        "password_rule2" : "• A upper & lower character",
+        "email" : "E-mail",
+        "password" : "Password",
+        "terms1" : "By logging in, you agree to Kootha’s",
+        "terms2" : " terms and conditions and privacy policy "
+      
     }
 }

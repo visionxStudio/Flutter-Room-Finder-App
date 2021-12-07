@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomfinder/src/common/constants/constants.dart';
+import 'package:roomfinder/src/common/widgets/size/custom_size_widget.dart';
 
 class CustomRoundedButton extends StatelessWidget {
   const CustomRoundedButton({
@@ -11,6 +12,7 @@ class CustomRoundedButton extends StatelessWidget {
     this.fontSize,
     this.fontWeight,
     this.fontColor,
+    this.icon = "",
     this.width,
   }) : super(key: key);
 
@@ -22,6 +24,7 @@ class CustomRoundedButton extends StatelessWidget {
   final double? fontSize;
   final FontWeight? fontWeight;
   final double? width;
+  final String icon;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -34,13 +37,26 @@ class CustomRoundedButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius ?? 8.0),
             color: backgroundColor ?? kBottonColor),
         child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: fontSize ?? 18.0,
-              color: fontColor ?? Colors.white,
-              fontWeight: fontWeight ?? FontWeight.w600,
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              icon.isNotEmpty
+                  ? Image.asset(
+                      icon,
+                      height: 18.0,
+                    )
+                  : const SizedBox(),
+              icon.isNotEmpty ? const WidthWidget(16.0) : const SizedBox(),
+              Text(
+                text,
+                style: TextStyle(
+                  fontSize: fontSize ?? 18.0,
+                  color: fontColor ?? Colors.white,
+                  fontWeight: fontWeight ?? FontWeight.w600,
+                ),
+              ),
+            ],
           ),
         ),
       ),
