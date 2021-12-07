@@ -20,6 +20,7 @@ const double kNavBarHeight = 75;
 const Color kScafoldColor = Color(0xFFF5F6FA);
 const Color kBottonColor = Color(0xFF4318FF);
 const Color kTextLinkColor = Color(0xFF3311DB);
+const Color kSecondCurveColor = Color(0xFFBECBE3);
 
 const Color kPrimaryColor = Color(0xFF1B2559);
 const Color kSecondaryColor = Color(0xFFE0F3FF);
