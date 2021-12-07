@@ -27,7 +27,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 2500),
     );
 
     final fadeSlideTween = Tween<double>(begin: 0.0, end: 1.0);
