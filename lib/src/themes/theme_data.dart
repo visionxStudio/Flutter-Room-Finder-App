@@ -18,7 +18,7 @@ class Themes {
         ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: lightTextTheme,
-    scaffoldBackgroundColor: kWhiteColor,
+    scaffoldBackgroundColor: kScafoldColor,
     primaryIconTheme: const IconThemeData(color: kBlackColor),
     elevatedButtonTheme: elevatedButtonThemeData,
     outlinedButtonTheme: outlinedButtonThemeData,

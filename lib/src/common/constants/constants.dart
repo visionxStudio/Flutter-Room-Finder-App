@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 const double kTabletBreakpoint = 768.0;
 
 /// 18
-const double kDefaultFontSize = 18;
+const double kDefaultFontSize = 16;
 
 ///20
 const double kDefaultPadding = 20;

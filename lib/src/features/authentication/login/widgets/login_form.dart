@@ -1,14 +1,13 @@
 import 'package:auto_route/src/router/auto_router_x.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:roomfinder/src/app_localization.dart';
-import 'package:roomfinder/src/common/constants/asset_image_link.dart';
 import 'package:roomfinder/src/common/constants/constants.dart';
-import 'package:roomfinder/src/common/widgets/button/custom_rounded_button.dart';
 import 'package:roomfinder/src/common/widgets/input_field/minimal_input_field.dart';
 import 'package:roomfinder/src/common/widgets/size/custom_size_widget.dart';
 import 'package:roomfinder/src/common/widgets/text/custom_normal_text_widget.dart';
-import 'package:roomfinder/src/common/widgets/text/text_span.dart';
+import 'package:roomfinder/src/features/authentication/widgets/kootha_terms_conditions.dart';
+import 'package:roomfinder/src/features/authentication/widgets/rounded_button_text.dart';
+import 'package:roomfinder/src/features/authentication/widgets/social_login.dart';
 import 'package:roomfinder/src/routes/app_router.gr.dart';
 
 import 'fade_slide_transition.dart';
@@ -62,88 +61,26 @@ class LoginForm extends StatelessWidget {
           FadeSlideTransition(
             animation: animation,
             additionalOffset: space,
-            child: Column(
-              children: [
-                CustomRoundedButton(
-                  text: "login_page.sign_in".tr(context),
-                  onTap: () {},
-                ),
-                const HeightWidget(8.0),
-                GestureDetector(
-                  onTap: () {
-                    context.router.push(const MobileNumberPageRoute());
-                  },
-                  child: NormalText(
-                    "login_page.no_account".tr(context),
-                    color: kBottonColor,
-                  ),
-                )
-              ],
+            child: RoundedButtonAndText(
+              buttonText: "login_page.sign_in".tr(context),
+              optionText: "login_page.no_account".tr(context),
+              buttonTap: () {},
+              optionTap: () => context.router.push(
+                const RegisterPageRoute(),
+              ),
             ),
           ),
           const HeightWidget(32.0),
           FadeSlideTransition(
             animation: animation,
             additionalOffset: 2 * space,
-            child: Column(
-              children: [
-                CustomRoundedButton(
-                  icon: IconAsset.google,
-                  fontColor: kNavBackgroundColor,
-                  backgroundColor: kWhiteColor,
-                  text: "login_page.google".tr(context),
-                  onTap: () {},
-                ),
-                const HeightWidget(8.0),
-                CustomRoundedButton(
-                  icon: IconAsset.facebook,
-                  fontColor: kNavBackgroundColor,
-                  backgroundColor: kWhiteColor,
-                  text: "login_page.facebook".tr(context),
-                  onTap: () {},
-                ),
-              ],
-            ),
+            child: const SocialLogin(),
           ),
           const HeightWidget(30.0),
           FadeSlideTransition(
             animation: animation,
             additionalOffset: 4 * space,
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: Center(
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    children: [
-                      customTextSpan(
-                        text: "By logging in, you agree to Kootha’s",
-                        onTap: TapGestureRecognizer()..onTap = () {},
-                      ),
-                      customTextSpan(
-                        text: " terms and conditions",
-                        underLine: true,
-                        onTap: TapGestureRecognizer()..onTap = () {},
-                      ),
-                      customTextSpan(
-                        text: " and ",
-                        onTap: TapGestureRecognizer()..onTap = () {},
-                      ),
-                      customTextSpan(
-                        text: "privacy policy",
-                        underLine: true,
-                        onTap: TapGestureRecognizer()..onTap = () {},
-                      ),
-                      // customTextSpan(
-                      //   text: Strings.kTerms5,
-                      //   onTap: TapGestureRecognizer()..onTap = () {},
-                      // ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            child: const KoothaTermsAndConditions(),
           ),
         ],
       ),
