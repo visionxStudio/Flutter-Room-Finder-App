@@ -1,4 +1,4 @@
-package com.example.roomfinder
+package com.visionxstudio.kootha
 
 import io.flutter.embedding.android.FlutterActivity
 

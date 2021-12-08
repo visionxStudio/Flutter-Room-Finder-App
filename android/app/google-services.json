@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "774848396543",
+    "project_id": "room-finder-app-a124b",
+    "storage_bucket": "room-finder-app-a124b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774848396543:android:1346b23854b528acc820ca",
+        "android_client_info": {
+          "package_name": "com.visionxstudio.kootha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "774848396543-ipfjt7d6asctgg0h8eamrukp24rnpdbo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdz2AtQiP0Vm8lCG_sTejpjVUby2tU9iY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "774848396543-ipfjt7d6asctgg0h8eamrukp24rnpdbo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

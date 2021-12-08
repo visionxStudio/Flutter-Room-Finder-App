@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.roomfinder">
+    package="com.visionxstudio.kootha">
    <application
         android:label="roomfinder"
         android:icon="@mipmap/ic_launcher">
