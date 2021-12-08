@@ -1,3 +1,4 @@
+import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:roomfinder/src/app_localization.dart';
@@ -8,6 +9,7 @@ import 'package:roomfinder/src/common/widgets/input_field/minimal_input_field.da
 import 'package:roomfinder/src/common/widgets/size/custom_size_widget.dart';
 import 'package:roomfinder/src/common/widgets/text/custom_normal_text_widget.dart';
 import 'package:roomfinder/src/common/widgets/text/text_span.dart';
+import 'package:roomfinder/src/routes/app_router.gr.dart';
 
 import 'fade_slide_transition.dart';
 
@@ -63,13 +65,18 @@ class LoginForm extends StatelessWidget {
             child: Column(
               children: [
                 CustomRoundedButton(
-                  text: "login_page.continue".tr(context),
+                  text: "login_page.sign_in".tr(context),
                   onTap: () {},
                 ),
                 const HeightWidget(8.0),
-                NormalText(
-                  "login_page.no_account".tr(context),
-                  color: kBottonColor,
+                GestureDetector(
+                  onTap: () {
+                    context.router.push(const MobileNumberPageRoute());
+                  },
+                  child: NormalText(
+                    "login_page.no_account".tr(context),
+                    color: kBottonColor,
+                  ),
                 )
               ],
             ),

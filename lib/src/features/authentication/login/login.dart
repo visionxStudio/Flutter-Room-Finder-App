@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:roomfinder/src/common/constants/constants.dart';
 import 'package:roomfinder/src/common/utils/app_size_utils.dart';
+import 'package:statusbarz/statusbarz.dart';
 
 import 'widgets/custom_clippers/index.dart';
 import 'widgets/header.dart';
@@ -98,6 +99,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     // TODO Remove this from here and put it in splash screen
     SizeConfig().init(context);
+    Statusbarz.instance.refresh();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: kScafoldColor,

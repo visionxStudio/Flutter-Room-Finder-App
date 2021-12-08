@@ -5,6 +5,7 @@
 
     "login_page"  : { 
         "continue" : "Continue",
+        "sign_in": "Sign In",
         "no_account" : "Don't have account? Register",
         "google": "Continue with  Google",
         "facebook" : "Continue With Facebook",
@@ -13,7 +14,20 @@
         "email" : "E-mail",
         "password" : "Password",
         "terms1" : "By logging in, you agree to Kootha’s",
-        "terms2" : " terms and conditions and privacy policy "
-      
+        "terms2" : " terms and conditions and privacy policy " 
+    },
+
+    "mobile_number_page" : {
+        "enter_mobile" : "Enter Your Mobile Number",
+        "will_send_otp" : "We will send OTP to you to verify its you.",
+        "continue" : "Continue",
+        "already_account" : "Already have an account?"
+    },
+
+    "verification_page" : {
+        "otp_verification" : "OTP Verification",
+        "five_digit_code" : "Enter the five digit verification code sent to mobile number ",
+        "continue" : "Continue",
+        "resend_otp" : "Didn't receive OTP? resend ?"
     }
 }
