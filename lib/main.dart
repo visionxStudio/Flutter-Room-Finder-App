@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:roomfinder/src/app_localization.dart';
-import 'package:roomfinder/src/common/services/shared_pref_provider.dart';
+import 'package:roomfinder/src/common/service/shared_pref_provider.dart';
+
 import 'package:roomfinder/src/locale_provider.dart';
 import 'package:roomfinder/src/routes/app_router.gr.dart';
 import 'package:statusbarz/statusbarz.dart';
