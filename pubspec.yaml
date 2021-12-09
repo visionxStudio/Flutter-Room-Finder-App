@@ -17,7 +17,10 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^1.0.0
+  freezed_annotation: ^0.15.0
+  formz: ^0.4.1
   http: ^0.13.4
+  json_annotation: ^4.3.0
   shared_preferences: ^2.0.9
   statusbarz: ^1.0.2
 
