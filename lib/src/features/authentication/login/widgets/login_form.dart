@@ -1,5 +1,6 @@
 import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:roomfinder/src/app_localization.dart';
 import 'package:roomfinder/src/common/constants/constants.dart';
 import 'package:roomfinder/src/common/widgets/input_field/minimal_input_field.dart';
@@ -36,9 +37,15 @@ class LoginForm extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MinimalInputField(
-                  hintText: "login_page.email".tr(context),
-                  textInputType: TextInputType.emailAddress,
+                Consumer(
+                  builder: (ctx, ref, child) {
+                    // final state = ref.watch(loginStateProvider);
+                    return MinimalInputField(
+                      hintText: "login_page.email".tr(context),
+                      textInputType: TextInputType.emailAddress,
+                      onChanged: (String value) {},
+                    );
+                  },
                 ),
                 MinimalInputField(
                   hintText: "login_page.password".tr(context),

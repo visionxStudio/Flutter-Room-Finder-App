@@ -4,9 +4,16 @@ import 'package:roomfinder/src/core/form_inputs/email.dart';
 import 'package:roomfinder/src/core/form_inputs/name.dart';
 import 'package:roomfinder/src/core/form_inputs/password.dart';
 import 'package:roomfinder/src/features/authentication/bloc/signup/signup_state.dart';
+import 'package:roomfinder/src/features/authentication/repositories/auth_repositiories.dart';
+
+final signupStateProvider =
+    StateNotifierProvider.autoDispose<SignUpNotifier, SignupState>(
+  (ref) => SignUpNotifier(ref.watch(authRepoProvider)),
+);
 
 class SignUpNotifier extends StateNotifier<SignupState> {
-  SignUpNotifier(SignupState state) : super(state);
+  SignUpNotifier(this._authRepo) : super(SignupState.initial());
+  final AuthRepository _authRepo;
 
   /// checking if [Email] is valid
   void emailChanged(String value) {

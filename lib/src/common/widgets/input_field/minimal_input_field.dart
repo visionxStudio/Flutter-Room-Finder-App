@@ -12,6 +12,8 @@ class MinimalInputField extends StatefulWidget {
     this.textEditingController,
     this.autofocus,
     this.maxLines,
+    this.onChanged,
+    this.errorText,
   }) : super(key: key);
   final String hintText;
   final TextInputType? textInputType;
@@ -20,6 +22,8 @@ class MinimalInputField extends StatefulWidget {
   final bool? autofocus;
   final int? maxLines;
   final bool isPassword;
+  final void Function(String)? onChanged;
+  final String? errorText;
 
   @override
   _MinimalInputFieldState createState() => _MinimalInputFieldState();
@@ -42,7 +46,8 @@ class _MinimalInputFieldState extends State<MinimalInputField> {
               decoration: BoxDecoration(
                   color: kWhiteColor, borderRadius: BorderRadius.circular(8.0)),
               margin: const EdgeInsets.only(bottom: kDefaultPadding - 5),
-              child: TextField(
+              child: TextFormField(
+                onChanged: widget.onChanged,
                 obscureText: widget.isPassword,
                 autofocus: widget.autofocus ?? false,
                 focusNode: widget.focusNode,
@@ -54,6 +59,7 @@ class _MinimalInputFieldState extends State<MinimalInputField> {
                     hintStyle: const TextStyle(
                         color: ksearchText, fontWeight: FontWeight.normal),
                     border: InputBorder.none,
+                    errorText: widget.errorText,
                     focusedBorder: InputBorder.none,
                     enabledBorder: InputBorder.none,
                     errorBorder: InputBorder.none,
