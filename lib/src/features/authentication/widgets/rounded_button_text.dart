@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:roomfinder/src/app_localization.dart';
 import 'package:roomfinder/src/common/constants/constants.dart';
-import 'package:roomfinder/src/common/widgets/button/custom_rounded_button.dart';
+import 'package:roomfinder/src/common/widgets/button/custom_elevated_button.dart';
 import 'package:roomfinder/src/common/widgets/size/custom_size_widget.dart';
 import 'package:roomfinder/src/common/widgets/text/custom_normal_text_widget.dart';
 
@@ -22,7 +21,7 @@ class RoundedButtonAndText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomRoundedButton(
+        CustomElevatedButton(
           text: buttonText,
           onTap: buttonTap,
         ),

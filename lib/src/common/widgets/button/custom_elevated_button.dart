@@ -5,15 +5,15 @@ import 'package:roomfinder/src/common/constants/constants.dart';
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     Key? key,
-    required this.label,
-    required this.onPressed,
+    required this.text,
+    required this.onTap,
     this.backgroundColor,
     this.textColor,
     this.disabled = false,
   }) : super(key: key);
 
-  final VoidCallback onPressed;
-  final String label;
+  final VoidCallback onTap;
+  final String text;
   final Color? backgroundColor;
   final Color? textColor;
   final bool disabled;
@@ -23,18 +23,18 @@ class CustomElevatedButton extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: kDefaultPadding + 5),
       child: Container(
-        constraints: const BoxConstraints(minHeight: 50),
+        constraints: const BoxConstraints(minHeight: 55),
         width: double.infinity,
         child: ElevatedButton(
           child: Text(
-            label.trim(),
+            text.trim(),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
-          onPressed: disabled ? () {} : onPressed,
+          onPressed: disabled ? () {} : onTap,
           style: !disabled
               ? ElevatedButton.styleFrom(
-                  primary: backgroundColor, // background
+                  primary: kBottonColor, // background
                   onPrimary: textColor, // text color
                 )
               : ElevatedButton.styleFrom(
