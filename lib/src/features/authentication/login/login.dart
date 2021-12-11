@@ -51,8 +51,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
     ));
 
     final clipperOffsetTween = Tween<double>(
-      // TODO change here to original screen height
-      begin: 800,
+      begin: 900,
       end: 0.0,
     );
     _blueTopClipperAnimation = clipperOffsetTween.animate(
@@ -97,8 +96,8 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    // TODO Remove this from here and put it in splash screen
     SizeConfig().init(context);
+
     Statusbarz.instance.refresh();
     return Scaffold(
       resizeToAvoidBottomInset: false,

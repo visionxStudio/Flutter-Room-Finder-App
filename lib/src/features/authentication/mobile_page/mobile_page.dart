@@ -8,7 +8,6 @@ import 'package:roomfinder/src/common/widgets/dropdown/country_code.dart';
 import 'package:roomfinder/src/common/widgets/input_field/minimal_input_field.dart';
 import 'package:roomfinder/src/common/widgets/size/custom_size_widget.dart';
 import 'package:roomfinder/src/common/widgets/text/custom_normal_text_widget.dart';
-import 'package:roomfinder/src/features/authentication/otp_verification/otp_page.dart';
 import 'package:roomfinder/src/routes/app_router.gr.dart';
 import 'package:statusbarz/statusbarz.dart';
 

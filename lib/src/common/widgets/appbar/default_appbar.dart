@@ -1,7 +1,7 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/material.dart';
 import 'package:roomfinder/src/common/constants/constants.dart';
 import 'package:roomfinder/src/common/widgets/text/custom_normal_text_widget.dart';
+import 'package:auto_route/auto_route.dart';
 
 class DefaultAppbar extends StatelessWidget implements PreferredSizeWidget {
   const DefaultAppbar({Key? key, required this.title}) : super(key: key);
