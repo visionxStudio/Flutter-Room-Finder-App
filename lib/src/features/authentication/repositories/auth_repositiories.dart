@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:roomfinder/src/common/service/repo.dart';
@@ -18,20 +19,42 @@ abstract class IAuthRepository {
 }
 
 class AuthRepository extends Repo implements IAuthRepository {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  User? user = FirebaseAuth.instance.currentUser;
+
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
   @override
   Future<void> signup(
       {required String email,
       required String username,
       required String password}) async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
-      print(userCredential.user!.uid);
+      await _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) async {
+        await user!.sendEmailVerification().then((_) async {
+          addUserToDatabase(
+              email: email, password: password, username: username);
+        });
+      });
     } on FirebaseAuthException catch (e) {
       rethrow;
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<void> addUserToDatabase(
+      {required String email,
+      required String password,
+      required username}) async {
+    await users.doc(user!.uid).set({
+      "email": email,
+      "name": username,
+      "password": password,
+      "uid": user!.uid,
+    });
   }
 
   @override
