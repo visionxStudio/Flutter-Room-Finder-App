@@ -5,7 +5,6 @@ import 'package:roomfinder/src/common/service/repo.dart';
 final authRepoProvider = Provider((ref) => AuthRepository());
 
 abstract class IAuthRepository {
-  // Future<AuthSession?> getUser();
   Future<void> login({required String email, required String password});
   Future<void> signup({
     required String email,

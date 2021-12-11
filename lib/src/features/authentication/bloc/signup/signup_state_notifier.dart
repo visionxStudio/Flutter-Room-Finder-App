@@ -58,10 +58,11 @@ class SignUpNotifier extends StateNotifier<SignupState> {
     state = state.copyWith(status: FormzStatus.submissionInProgress);
 
     try {
-      _authRepo.signup(
+      await _authRepo.signup(
           email: state.email.value,
           username: state.userName.value,
           password: state.password.value);
+      state = state.copyWith(status: FormzStatus.submissionSuccess);
     } on NetworkExceptions catch (e) {
       //  catch Network exceptions in here
       state = state.copyWith(
@@ -69,6 +70,5 @@ class SignUpNotifier extends StateNotifier<SignupState> {
         errorMessage: e.getIntlException(),
       );
     }
-    state = state.copyWith(status: FormzStatus.submissionSuccess);
   }
 }

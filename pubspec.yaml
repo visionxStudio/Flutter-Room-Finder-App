@@ -22,7 +22,6 @@ dependencies:
   formz: ^0.4.1
   http: ^0.13.4
   json_annotation: ^4.3.0
-  modal_progress_hud_nsn: ^0.1.0-nullsafety-0
   shared_preferences: ^2.0.9
   statusbarz: ^1.0.2
 

@@ -36,9 +36,9 @@ void main() async {
   Firebase.initializeApp();
 
   runApp(
-    ProviderScope(
-      observers: [Logger()],
-      child: const MyApp(),
+    const ProviderScope(
+      // observers: [Logger()],
+      child: MyApp(),
     ),
   );
   //);
