@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,7 +33,8 @@ class Logger extends ProviderObserver {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefProvider.initialize();
-  //initializeDateFormatting().then((_) =>
+  Firebase.initializeApp();
+
   runApp(
     ProviderScope(
       observers: [Logger()],

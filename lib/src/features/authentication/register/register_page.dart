@@ -12,9 +12,15 @@ import 'package:roomfinder/src/features/authentication/widgets/kootha_terms_cond
 import 'package:roomfinder/src/features/authentication/widgets/rounded_button_text.dart';
 import 'package:roomfinder/src/features/authentication/widgets/social_login.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends ConsumerState<RegisterPage> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,87 +71,133 @@ class RegisterPage extends StatelessWidget {
                   ),
                   const Spacer(),
                   // Form Field
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Consumer(
-                        builder: (ctx, ref, child) {
-                          final state = ref.watch(signupStateProvider);
-                          return MinimalInputField(
-                            hintText: "Full Name",
-                            errorText:
-                                state.userName.invalid ? "Invalid Name" : null,
-                            onChanged: ref
-                                .read(signupStateProvider.notifier)
-                                .nameChanged,
-                          );
-                        },
-                      ),
-                      Consumer(
-                        builder: (ctx, ref, child) {
-                          final state = ref.watch(signupStateProvider);
-                          return MinimalInputField(
-                            hintText: "E-Mail",
-                            errorText:
-                                state.email.invalid ? "Invalid E-Mail" : null,
-                            onChanged: ref
-                                .read(signupStateProvider.notifier)
-                                .emailChanged,
-                          );
-                        },
-                      ),
-                      Consumer(
-                        builder: (ctx, ref, child) {
-                          final state = ref.watch(signupStateProvider);
-                          return MinimalInputField(
-                            hintText: "Password",
-                            errorText: state.password.invalid
-                                ? "Invalid password"
-                                : null,
-                            onChanged: ref
-                                .read(signupStateProvider.notifier)
-                                .passwordChanged,
-                          );
-                        },
-                      ),
-                      Consumer(
-                        builder: (context, ref, child) {
-                          final state = ref.watch(signupStateProvider);
-                          return MinimalInputField(
-                            textInputType: TextInputType.name,
-
-                            hintText: "Confirm Password",
-                            errorText: state.confirmPassword.value.isEmpty
-                                ? null
-                                : state.password == state.confirmPassword
-                                    ? null
-                                    : 'Passwords didn\'t match',
-                            // : null,
-                            onChanged: ref
-                                .read(signupStateProvider.notifier)
-                                .confirmPasswordChanged,
-                          );
-                        },
-                      ),
-                      NormalText(
-                        "login_page.password_rule1".tr(context),
-                        color: kDarkGrey,
-                        fontSize: 16.0,
-                      ),
-                      NormalText(
-                        "login_page.password_rule2".tr(context),
-                        color: kDarkGrey,
-                        fontSize: 16.0,
-                      )
-                    ],
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Consumer(
+                          builder: (ctx, ref, child) {
+                            final state = ref.watch(signupStateProvider);
+                            return MinimalInputField(
+                              validator: (String? value) {
+                                if (value!.isEmpty) {
+                                  return "Field is required";
+                                }
+                                if (state.userName.invalid) {
+                                  return "Invalid Name";
+                                }
+                                return null;
+                              },
+                              hintText: "Full Name",
+                              errorText: state.userName.invalid
+                                  ? "Invalid Name"
+                                  : null,
+                              onChanged: ref
+                                  .read(signupStateProvider.notifier)
+                                  .nameChanged,
+                            );
+                          },
+                        ),
+                        Consumer(
+                          builder: (ctx, ref, child) {
+                            final state = ref.watch(signupStateProvider);
+                            return MinimalInputField(
+                              validator: (String? value) {
+                                if (value!.isEmpty) {
+                                  return "Field is required";
+                                }
+                                if (state.email.invalid) {
+                                  return "Invalid E-Mail";
+                                }
+                                return null;
+                              },
+                              hintText: "E-Mail",
+                              errorText:
+                                  state.email.invalid ? "Invalid E-Mail" : null,
+                              onChanged: ref
+                                  .read(signupStateProvider.notifier)
+                                  .emailChanged,
+                            );
+                          },
+                        ),
+                        Consumer(
+                          builder: (ctx, ref, child) {
+                            final state = ref.watch(signupStateProvider);
+                            return MinimalInputField(
+                              validator: (String? value) {
+                                if (value!.isEmpty) {
+                                  return "Field is required";
+                                }
+                                if (state.password.invalid) {
+                                  return "Invalid password";
+                                }
+                                return null;
+                              },
+                              hintText: "Password",
+                              errorText: state.password.invalid
+                                  ? "Invalid password"
+                                  : null,
+                              onChanged: ref
+                                  .read(signupStateProvider.notifier)
+                                  .passwordChanged,
+                            );
+                          },
+                        ),
+                        Consumer(
+                          builder: (context, ref, child) {
+                            final state = ref.watch(signupStateProvider);
+                            return MinimalInputField(
+                              textInputType: TextInputType.name,
+                              validator: (String? value) {
+                                if (value!.isEmpty) {
+                                  return "Field is required";
+                                }
+                                if (state.password != state.confirmPassword) {
+                                  return "Passwords didn't match";
+                                }
+                                return null;
+                              },
+                              hintText: "Confirm Password",
+                              errorText: state.confirmPassword.value.isEmpty
+                                  ? null
+                                  : state.password == state.confirmPassword
+                                      ? null
+                                      : 'Passwords didn\'t match',
+                              onChanged: ref
+                                  .read(signupStateProvider.notifier)
+                                  .confirmPasswordChanged,
+                            );
+                          },
+                        ),
+                        NormalText(
+                          "login_page.password_rule1".tr(context),
+                          color: kDarkGrey,
+                          fontSize: 16.0,
+                        ),
+                        NormalText(
+                          "login_page.password_rule2".tr(context),
+                          color: kDarkGrey,
+                          fontSize: 16.0,
+                        )
+                      ],
+                    ),
                   ),
                   const Spacer(),
 
                   RoundedButtonAndText(
                     buttonText: "Register",
                     optionText: "Already have an account? Login",
-                    buttonTap: () {},
-                    optionTap: () {},
+                    buttonTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        ref.read(signupStateProvider.notifier).signup();
+                      } else {
+                        return;
+                      }
+                    },
+                    optionTap: () {
+                      context.router.pop();
+                    },
                   ),
                   const Spacer(),
 

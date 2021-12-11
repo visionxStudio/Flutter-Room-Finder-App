@@ -1,3 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:roomfinder/src/common/service/repo.dart';
 
@@ -22,9 +25,16 @@ class AuthRepository extends Repo implements IAuthRepository {
   Future<void> signup(
       {required String email,
       required String username,
-      required String password}) {
-    // TODO: implement signup
-    throw UnimplementedError();
+      required String password}) async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      print(userCredential.user!.uid);
+    } on FirebaseAuthException catch (e) {
+      rethrow;
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override

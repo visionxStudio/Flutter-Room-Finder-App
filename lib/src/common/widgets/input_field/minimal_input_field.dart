@@ -13,6 +13,7 @@ class MinimalInputField extends StatefulWidget {
     this.autofocus,
     this.maxLines,
     this.onChanged,
+    this.validator,
     this.errorText,
   }) : super(key: key);
   final String hintText;
@@ -23,6 +24,7 @@ class MinimalInputField extends StatefulWidget {
   final int? maxLines;
   final bool isPassword;
   final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
   final String? errorText;
 
   @override
@@ -34,46 +36,6 @@ class _MinimalInputFieldState extends State<MinimalInputField> {
   FocusNode? focusNode;
   @override
   Widget build(BuildContext context) {
-    // return SizedBox(
-    //   width: MediaQuery.of(context).size.width,
-    //   child: Row(
-    //     crossAxisAlignment: CrossAxisAlignment.center,
-    //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-    //     children: [
-    //       Flexible(
-    //         child: Container(
-    //           height: 50.0,
-    //           decoration: BoxDecoration(
-    //               color: kWhiteColor, borderRadius: BorderRadius.circular(8.0)),
-    //           margin: const EdgeInsets.only(bottom: kDefaultPadding - 5),
-    //           child: TextFormField(
-    //             onChanged: widget.onChanged,
-    //             obscureText: widget.isPassword,
-    //             autofocus: widget.autofocus ?? false,
-    //             focusNode: widget.focusNode,
-    //             onTap: () {},
-    //             controller: widget.textEditingController,
-    //             maxLines: widget.isPassword ? 1 : widget.maxLines,
-    //             decoration: InputDecoration(
-    //               hintText: widget.hintText,
-    //               hintStyle: const TextStyle(
-    //                   color: ksearchText, fontWeight: FontWeight.normal),
-    //               border: InputBorder.none,
-    //               errorText: widget.errorText,
-    //               focusedBorder: InputBorder.none,
-    //               enabledBorder: InputBorder.none,
-    //               errorBorder: InputBorder.none,
-    //               disabledBorder: InputBorder.none,
-    //               contentPadding: const EdgeInsets.all(16.0),
-    //             ),
-    //             keyboardType: widget.textInputType ?? TextInputType.text,
-    //           ),
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // );
-
     return Container(
       margin: const EdgeInsets.only(bottom: kDefaultPadding - 5),
       child: TextFormField(
@@ -94,6 +56,7 @@ class _MinimalInputFieldState extends State<MinimalInputField> {
         onChanged: widget.onChanged,
         cursorColor: Colors.black,
         cursorHeight: 20.0,
+        validator: widget.validator,
         textInputAction: TextInputAction.next,
         keyboardType: TextInputType.emailAddress,
         onFieldSubmitted: (_) {},

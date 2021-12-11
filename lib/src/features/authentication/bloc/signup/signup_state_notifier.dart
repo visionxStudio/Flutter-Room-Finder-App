@@ -5,6 +5,7 @@ import 'package:roomfinder/src/core/form_inputs/name.dart';
 import 'package:roomfinder/src/core/form_inputs/password.dart';
 import 'package:roomfinder/src/features/authentication/bloc/signup/signup_state.dart';
 import 'package:roomfinder/src/features/authentication/repositories/auth_repositiories.dart';
+import 'package:roomfinder/src/common/service/exceptions/network_exceptions.dart';
 
 final signupStateProvider =
     StateNotifierProvider.autoDispose<SignUpNotifier, SignupState>(
@@ -57,10 +58,17 @@ class SignUpNotifier extends StateNotifier<SignupState> {
     state = state.copyWith(status: FormzStatus.submissionInProgress);
 
     try {
-      // TODO signup in here
-    } catch (e) {
+      _authRepo.signup(
+          email: state.email.value,
+          username: state.userName.value,
+          password: state.password.value);
+    } on NetworkExceptions catch (e) {
       //  catch Network exceptions in here
-      state = state.copyWith(status: FormzStatus.submissionSuccess);
+      state = state.copyWith(
+        status: FormzStatus.submissionFailure,
+        errorMessage: e.getIntlException(),
+      );
     }
+    state = state.copyWith(status: FormzStatus.submissionSuccess);
   }
 }
