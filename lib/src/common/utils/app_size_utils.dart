@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roomfinder/src/common/constants/constants.dart';
 
 class SizeConfig {
   static late MediaQueryData _mediaQueryData;
@@ -6,13 +7,18 @@ class SizeConfig {
   static late double screenHeight;
   static bool isLandscape = false;
   static bool isdesktop = false;
+  static bool isSmallScreen = false;
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
     screenWidth = _mediaQueryData.size.width;
     screenHeight = _mediaQueryData.size.height;
+
     isLandscape =
         _mediaQueryData.orientation == Orientation.landscape ? true : false;
+    if (screenHeight < kTabletBreakpoint) {
+      isSmallScreen = true;
+    }
     if (screenWidth > screenHeight && screenWidth > 900) {
       isdesktop = true;
     } else {

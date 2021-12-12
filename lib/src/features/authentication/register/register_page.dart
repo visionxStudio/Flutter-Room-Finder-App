@@ -39,15 +39,198 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
     return CustomProgressIndicatorOverlay(
       inAsyncCall: ref.watch(signupStateProvider).status ==
           FormzStatus.submissionInProgress,
+      // child: Scaffold(
+      //   backgroundColor: kScafoldColor,
+      //   body: SingleChildScrollView(
+      //     child: Padding(
+      //       padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      //       child: SafeArea(
+      //         child: Column(
+      //           mainAxisSize: MainAxisSize.max,
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //           children: [
+      //             const HeightWidget(8.0),
+      //             GestureDetector(
+      //               onTap: () => context.router.pop(),
+      //               child: const Icon(
+      //                 Icons.arrow_back_ios,
+      //                 color: kBlackColor,
+      //               ),
+      //             ),
+      //             const HeightWidget(8.0),
+      //             SizedBox(
+      //               width: double.infinity,
+      //               child: Column(
+      //                 mainAxisSize: MainAxisSize.min,
+      //                 crossAxisAlignment: CrossAxisAlignment.center,
+      //                 children: const [
+      //                   NormalText(
+      //                     "Register ",
+      //                     fontSize: 24.0,
+      //                     fontWeight: FontWeight.w500,
+      //                     color: kAppBarColor,
+      //                   ),
+      //                   HeightWidget(8.0),
+      //                   NormalText(
+      //                     "We will send verification Email \n  to verify it’s you.",
+      //                     fontSize: 16.0,
+      //                     fontWeight: FontWeight.w500,
+      //                     color: ksearchText,
+      //                     isCentered: true,
+      //                   ),
+      //                 ],
+      //               ),
+      //             ),
+      //             const HeightWidget(16.0),
+      //             Form(
+      //               key: _formKey,
+      //               child: Column(
+      //                 crossAxisAlignment: CrossAxisAlignment.start,
+      //                 children: [
+      //                   Consumer(
+      //                     builder: (ctx, ref, child) {
+      //                       final state = ref.watch(signupStateProvider);
+      //                       return MinimalInputField(
+      //                         validator: (String? value) {
+      //                           if (value!.isEmpty) {
+      //                             return "Field is required";
+      //                           }
+      //                           if (state.userName.invalid) {
+      //                             return "Invalid Name";
+      //                           }
+      //                           return null;
+      //                         },
+      //                         hintText: "Full Name",
+      //                         errorText: state.userName.invalid
+      //                             ? "Invalid Name"
+      //                             : null,
+      //                         onChanged: ref
+      //                             .read(signupStateProvider.notifier)
+      //                             .nameChanged,
+      //                       );
+      //                     },
+      //                   ),
+      //                   Consumer(
+      //                     builder: (ctx, ref, child) {
+      //                       final state = ref.watch(signupStateProvider);
+      //                       return MinimalInputField(
+      //                         validator: (String? value) {
+      //                           if (value!.isEmpty) {
+      //                             return "Field is required";
+      //                           }
+      //                           if (state.email.invalid) {
+      //                             return "Invalid E-Mail";
+      //                           }
+      //                           return null;
+      //                         },
+      //                         hintText: "E-Mail",
+      //                         errorText:
+      //                             state.email.invalid ? "Invalid E-Mail" : null,
+      //                         onChanged: ref
+      //                             .read(signupStateProvider.notifier)
+      //                             .emailChanged,
+      //                       );
+      //                     },
+      //                   ),
+      //                   Consumer(
+      //                     builder: (ctx, ref, child) {
+      //                       final state = ref.watch(signupStateProvider);
+      //                       return MinimalInputField(
+      //                         validator: (String? value) {
+      //                           if (value!.isEmpty) {
+      //                             return "Field is required";
+      //                           }
+      //                           if (state.password.invalid) {
+      //                             return "Invalid password";
+      //                           }
+      //                           return null;
+      //                         },
+      //                         hintText: "Password",
+      //                         errorText: state.password.invalid
+      //                             ? "Invalid password"
+      //                             : null,
+      //                         onChanged: ref
+      //                             .read(signupStateProvider.notifier)
+      //                             .passwordChanged,
+      //                       );
+      //                     },
+      //                   ),
+      //                   Consumer(
+      //                     builder: (context, ref, child) {
+      //                       final state = ref.watch(signupStateProvider);
+      //                       return MinimalInputField(
+      //                         textInputType: TextInputType.name,
+      //                         validator: (String? value) {
+      //                           if (value!.isEmpty) {
+      //                             return "Field is required";
+      //                           }
+      //                           if (state.password != state.confirmPassword) {
+      //                             return "Passwords didn't match";
+      //                           }
+      //                           return null;
+      //                         },
+      //                         hintText: "Confirm Password",
+      //                         errorText: state.confirmPassword.value.isEmpty
+      //                             ? null
+      //                             : state.password == state.confirmPassword
+      //                                 ? null
+      //                                 : 'Passwords didn\'t match',
+      //                         onChanged: ref
+      //                             .read(signupStateProvider.notifier)
+      //                             .confirmPasswordChanged,
+      //                       );
+      //                     },
+      //                   ),
+      //                   NormalText(
+      //                     "login_page.password_rule1".tr(context),
+      //                     color: kDarkGrey,
+      //                     fontSize: 16.0,
+      //                   ),
+      //                   NormalText(
+      //                     "login_page.password_rule2".tr(context),
+      //                     color: kDarkGrey,
+      //                     fontSize: 16.0,
+      //                   )
+      //                 ],
+      //               ),
+      //             ),
+      //             const HeightWidget(16.0),
+      //             RoundedButtonAndText(
+      //               buttonText: "Register",
+      //               optionText: "Already have an account? Login",
+      //               buttonTap: () async {
+      //                 if (_formKey.currentState!.validate()) {
+      //                   ref.read(signupStateProvider.notifier).signup();
+      //                 } else {
+      //                   return;
+      //                 }
+      //               },
+      //               optionTap: () {
+      //                 context.router.pop();
+      //               },
+      //             ),
+      //             const HeightWidget(8.0),
+      //             const SocialLogin(),
+      //             const HeightWidget(8.0),
+      //             const KoothaTermsAndConditions(),
+      //             const HeightWidget(16.0),
+      //           ],
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      // ),
       child: Scaffold(
         backgroundColor: kScafoldColor,
-        body: SingleChildScrollView(
-          child: SizedBox(
-            width: double.infinity,
-            height: SizeConfig.screenHeight,
-            child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        body: SafeArea(
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+            child: SingleChildScrollView(
+              child: SizedBox(
+                height: SizeConfig.screenHeight,
+                width: double.infinity,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +243,6 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                         color: kBlackColor,
                       ),
                     ),
-                    const Spacer(),
 
                     SizedBox(
                       width: double.infinity,
@@ -200,7 +382,8 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                         ],
                       ),
                     ),
-                    const Spacer(),
+                    // const Spacer(),
+                    const HeightWidget(16.0),
 
                     RoundedButtonAndText(
                       buttonText: "Register",
@@ -223,6 +406,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
 
                     const KoothaTermsAndConditions(),
                     const HeightWidget(16.0),
+                    const Spacer(),
                   ],
                 ),
               ),
