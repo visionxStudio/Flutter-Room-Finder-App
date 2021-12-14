@@ -23,7 +23,8 @@ class _$SignupStateTearOff {
       required Password confirmPassword,
       required Name userName,
       required FormzStatus status,
-      String? errorMessage}) {
+      String? errorMessage,
+      String? successMessage}) {
     return _SignupState(
       email: email,
       password: password,
@@ -31,6 +32,7 @@ class _$SignupStateTearOff {
       userName: userName,
       status: status,
       errorMessage: errorMessage,
+      successMessage: successMessage,
     );
   }
 }
@@ -50,6 +52,7 @@ mixin _$SignupState {
 
   /// Error message if form submission is failed
   String? get errorMessage => throw _privateConstructorUsedError;
+  String? get successMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignupStateCopyWith<SignupState> get copyWith =>
@@ -67,7 +70,8 @@ abstract class $SignupStateCopyWith<$Res> {
       Password confirmPassword,
       Name userName,
       FormzStatus status,
-      String? errorMessage});
+      String? errorMessage,
+      String? successMessage});
 }
 
 /// @nodoc
@@ -86,6 +90,7 @@ class _$SignupStateCopyWithImpl<$Res> implements $SignupStateCopyWith<$Res> {
     Object? userName = freezed,
     Object? status = freezed,
     Object? errorMessage = freezed,
+    Object? successMessage = freezed,
   }) {
     return _then(_value.copyWith(
       email: email == freezed
@@ -112,6 +117,10 @@ class _$SignupStateCopyWithImpl<$Res> implements $SignupStateCopyWith<$Res> {
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      successMessage: successMessage == freezed
+          ? _value.successMessage
+          : successMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -129,7 +138,8 @@ abstract class _$SignupStateCopyWith<$Res>
       Password confirmPassword,
       Name userName,
       FormzStatus status,
-      String? errorMessage});
+      String? errorMessage,
+      String? successMessage});
 }
 
 /// @nodoc
@@ -150,6 +160,7 @@ class __$SignupStateCopyWithImpl<$Res> extends _$SignupStateCopyWithImpl<$Res>
     Object? userName = freezed,
     Object? status = freezed,
     Object? errorMessage = freezed,
+    Object? successMessage = freezed,
   }) {
     return _then(_SignupState(
       email: email == freezed
@@ -176,6 +187,10 @@ class __$SignupStateCopyWithImpl<$Res> extends _$SignupStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      successMessage: successMessage == freezed
+          ? _value.successMessage
+          : successMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -189,7 +204,8 @@ class _$_SignupState implements _SignupState {
       required this.confirmPassword,
       required this.userName,
       required this.status,
-      this.errorMessage});
+      this.errorMessage,
+      this.successMessage});
 
   @override
 
@@ -207,10 +223,12 @@ class _$_SignupState implements _SignupState {
 
   /// Error message if form submission is failed
   final String? errorMessage;
+  @override
+  final String? successMessage;
 
   @override
   String toString() {
-    return 'SignupState(email: $email, password: $password, confirmPassword: $confirmPassword, userName: $userName, status: $status, errorMessage: $errorMessage)';
+    return 'SignupState(email: $email, password: $password, confirmPassword: $confirmPassword, userName: $userName, status: $status, errorMessage: $errorMessage, successMessage: $successMessage)';
   }
 
   @override
@@ -227,12 +245,14 @@ class _$_SignupState implements _SignupState {
                 other.userName == userName) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.successMessage, successMessage) ||
+                other.successMessage == successMessage));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, email, password, confirmPassword,
-      userName, status, errorMessage);
+      userName, status, errorMessage, successMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -247,7 +267,8 @@ abstract class _SignupState implements SignupState {
       required Password confirmPassword,
       required Name userName,
       required FormzStatus status,
-      String? errorMessage}) = _$_SignupState;
+      String? errorMessage,
+      String? successMessage}) = _$_SignupState;
 
   @override
 
@@ -265,6 +286,8 @@ abstract class _SignupState implements SignupState {
 
   /// Error message if form submission is failed
   String? get errorMessage;
+  @override
+  String? get successMessage;
   @override
   @JsonKey(ignore: true)
   _$SignupStateCopyWith<_SignupState> get copyWith =>

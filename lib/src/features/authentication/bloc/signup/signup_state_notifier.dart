@@ -4,7 +4,6 @@ import 'package:formz/formz.dart';
 import 'package:roomfinder/src/core/form_inputs/email.dart';
 import 'package:roomfinder/src/core/form_inputs/name.dart';
 import 'package:roomfinder/src/core/form_inputs/password.dart';
-import 'package:roomfinder/src/features/authentication/bloc/firebase_exception/firebase_auth_exception_handler.dart';
 import 'package:roomfinder/src/features/authentication/bloc/signup/signup_state.dart';
 import 'package:roomfinder/src/features/authentication/repositories/auth_repositiories.dart';
 import 'package:roomfinder/src/common/service/exceptions/network_exceptions.dart';
@@ -61,10 +60,15 @@ class SignUpNotifier extends StateNotifier<SignupState> {
 
     try {
       await _authRepo.signup(
-          email: state.email.value,
-          username: state.userName.value,
-          password: state.password.value);
-      state = state.copyWith(status: FormzStatus.submissionSuccess);
+        email: state.email.value,
+        username: state.userName.value,
+        password: state.password.value,
+      );
+      state = state.copyWith(
+        successMessage:
+            "A Verification Email has been sent to your E-mail address.",
+        status: FormzStatus.submissionSuccess,
+      );
       //  catching  Firebase authentication errors
     } on FirebaseAuthException catch (e) {
       state = state.copyWith(

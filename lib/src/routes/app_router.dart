@@ -12,7 +12,7 @@ import 'package:roomfinder/src/features/splash/roomfinder_splash.dart';
     AutoRoute(page: Login, initial: true),
     AutoRoute(page: MobileNumberPage),
     AutoRoute(page: OtpPage),
-    AutoRoute(page: RegisterPage),
+    AutoRoute(page: SignupPage),
   ],
 )
 class $AppRouter {}

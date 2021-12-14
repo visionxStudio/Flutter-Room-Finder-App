@@ -73,7 +73,7 @@ class LoginForm extends StatelessWidget {
               optionText: "login_page.no_account".tr(context),
               buttonTap: () {},
               optionTap: () => context.router.push(
-                const RegisterPageRoute(),
+                const SignupPageRoute(),
               ),
             ),
           ),
