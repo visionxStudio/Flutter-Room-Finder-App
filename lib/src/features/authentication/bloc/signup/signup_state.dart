@@ -20,6 +20,7 @@ class SignupState with _$SignupState {
 
     /// Error message if form submission is failed
     String? errorMessage,
+    String? successMessage,
   }) = _SignupState;
 
   /// Initial state of Signup form

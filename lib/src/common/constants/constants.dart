@@ -24,6 +24,8 @@ const Color kNavBarBackgroundColor = Color(0xFFF0EFFC);
 const Color knavbarInactiveColor = Color(0xFF8F9BBA);
 const Color kLightBlueTextColor = Color(0xff707EAE);
 const Color kBlueVioletColor = Color(0xFF6236FF);
+const Color kDialogBoxSuccess = Color(0xFF5B64CB);
+const Color kDialogBoxFailure = Color(0xFFCB5B5B);
 
 // Colors for chips
 const Color kChipColor = Color(0xFFE9EDF7);

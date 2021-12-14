@@ -14,7 +14,7 @@ import 'package:flutter/material.dart' as _i7;
 import '../features/authentication/login/login.dart' as _i2;
 import '../features/authentication/mobile_page/mobile_page.dart' as _i3;
 import '../features/authentication/otp_verification/otp_page.dart' as _i4;
-import '../features/authentication/register/register_page.dart' as _i5;
+import '../features/authentication/signup/signup_page.dart' as _i5;
 import '../features/splash/roomfinder_splash.dart' as _i1;
 
 class AppRouter extends _i6.RootStackRouter {
@@ -39,9 +39,9 @@ class AppRouter extends _i6.RootStackRouter {
       return _i6.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i4.OtpPage());
     },
-    RegisterPageRoute.name: (routeData) {
+    SignupPageRoute.name: (routeData) {
       return _i6.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i5.RegisterPage());
+          routeData: routeData, child: const _i5.SignupPage());
     }
   };
 
@@ -53,7 +53,7 @@ class AppRouter extends _i6.RootStackRouter {
         _i6.RouteConfig(MobileNumberPageRoute.name,
             path: '/mobile-number-page'),
         _i6.RouteConfig(OtpPageRoute.name, path: '/otp-page'),
-        _i6.RouteConfig(RegisterPageRoute.name, path: '/register-page')
+        _i6.RouteConfig(SignupPageRoute.name, path: '/signup-page')
       ];
 }
 
@@ -85,9 +85,9 @@ class OtpPageRoute extends _i6.PageRouteInfo<void> {
   static const String name = 'OtpPageRoute';
 }
 
-/// generated route for [_i5.RegisterPage]
-class RegisterPageRoute extends _i6.PageRouteInfo<void> {
-  const RegisterPageRoute() : super(name, path: '/register-page');
+/// generated route for [_i5.SignupPage]
+class SignupPageRoute extends _i6.PageRouteInfo<void> {
+  const SignupPageRoute() : super(name, path: '/signup-page');
 
-  static const String name = 'RegisterPageRoute';
+  static const String name = 'SignupPageRoute';
 }
