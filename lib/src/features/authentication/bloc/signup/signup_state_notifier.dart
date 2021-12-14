@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
 import 'package:roomfinder/src/core/form_inputs/email.dart';
 import 'package:roomfinder/src/core/form_inputs/name.dart';
 import 'package:roomfinder/src/core/form_inputs/password.dart';
+import 'package:roomfinder/src/features/authentication/bloc/firebase_exception/firebase_auth_exception_handler.dart';
 import 'package:roomfinder/src/features/authentication/bloc/signup/signup_state.dart';
 import 'package:roomfinder/src/features/authentication/repositories/auth_repositiories.dart';
 import 'package:roomfinder/src/common/service/exceptions/network_exceptions.dart';
@@ -63,6 +65,13 @@ class SignUpNotifier extends StateNotifier<SignupState> {
           username: state.userName.value,
           password: state.password.value);
       state = state.copyWith(status: FormzStatus.submissionSuccess);
+      //  catching  Firebase authentication errors
+    } on FirebaseAuthException catch (e) {
+      state = state.copyWith(
+        status: FormzStatus.submissionFailure,
+        errorMessage: e.message,
+      );
+      // catching  Network exceptions
     } on NetworkExceptions catch (e) {
       //  catch Network exceptions in here
       state = state.copyWith(

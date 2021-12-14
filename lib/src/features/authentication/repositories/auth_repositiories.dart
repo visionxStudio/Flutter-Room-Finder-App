@@ -29,20 +29,13 @@ class AuthRepository extends Repo implements IAuthRepository {
       {required String email,
       required String username,
       required String password}) async {
-    try {
-      await _firebaseAuth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) async {
-        await user!.sendEmailVerification().then((_) async {
-          addUserToDatabase(
-              email: email, password: password, username: username);
-        });
+    await _firebaseAuth
+        .createUserWithEmailAndPassword(email: email, password: password)
+        .then((value) async {
+      await user!.sendEmailVerification().then((_) async {
+        addUserToDatabase(email: email, password: password, username: username);
       });
-    } on FirebaseAuthException catch (e) {
-      rethrow;
-    } catch (e) {
-      print(e);
-    }
+    });
   }
 
   Future<void> addUserToDatabase(

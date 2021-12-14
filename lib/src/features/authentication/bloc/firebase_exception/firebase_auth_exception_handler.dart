@@ -1,6 +1,10 @@
-import 'enum/auth_result_status.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'auth_result_status.dart';
 
 class AuthExceptionHandler {
+  AuthExceptionHandler(FirebaseAuthException e);
+
   static handleException(e) {
     AuthResultStatus status;
     switch (e.code) {
