@@ -11,6 +11,8 @@ import 'package:roomfinder/src/common/widgets/size/custom_size_widget.dart';
 import 'package:roomfinder/src/common/widgets/text/custom_normal_text_widget.dart';
 import 'package:roomfinder/src/features/authentication/bloc/signup/signup_state.dart';
 import 'package:roomfinder/src/features/authentication/bloc/signup/signup_state_notifier.dart';
+import 'package:roomfinder/src/features/authentication/signup/widgets/register_error.dart';
+import 'package:roomfinder/src/features/authentication/signup/widgets/register_success.dart';
 import 'package:roomfinder/src/features/authentication/widgets/kootha_terms_conditions.dart';
 import 'package:roomfinder/src/features/authentication/widgets/rounded_button_text.dart';
 import 'package:roomfinder/src/features/authentication/widgets/social_login.dart';
@@ -24,16 +26,35 @@ class SignupPage extends ConsumerStatefulWidget {
 
 class _SignupPageState extends ConsumerState<SignupPage> {
   final _formKey = GlobalKey<FormState>();
+
+  _showCustomDialog({required String message, required isSuccess}) {
+    showDialog(
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        child: isSuccess
+            ? RegisterSuccessful(
+                message: message,
+              )
+            : RegisterError(
+                message: message,
+              ),
+      ),
+      context: context,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     ref.listen<SignupState>(signupStateProvider, (previous, next) {
       if (next.status.isSubmissionFailure) {
-        ScaffoldMessenger.of(context)
-          ..hideCurrentSnackBar()
-          ..showSnackBar(SnackBar(content: Text(next.errorMessage!)));
+        _showCustomDialog(message: next.errorMessage!, isSuccess: false);
       }
       if (next.status.isSubmissionSuccess) {
-        // AutoRouter.of(context).replace(const PersonalInfoPageRoute());
+        _showCustomDialog(message: next.successMessage!, isSuccess: true);
       }
     });
     return CustomProgressIndicatorOverlay(

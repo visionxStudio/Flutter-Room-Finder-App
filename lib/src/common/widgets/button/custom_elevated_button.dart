@@ -8,6 +8,7 @@ class CustomElevatedButton extends StatelessWidget {
     required this.text,
     required this.onTap,
     this.backgroundColor,
+    this.height,
     this.textColor,
     this.disabled = false,
   }) : super(key: key);
@@ -17,13 +18,14 @@ class CustomElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? textColor;
   final bool disabled;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: kDefaultPadding),
       child: Container(
-        constraints: const BoxConstraints(minHeight: 55),
+        constraints: BoxConstraints(minHeight: height ?? 55),
         width: double.infinity,
         child: ElevatedButton(
           child: Text(
@@ -34,7 +36,7 @@ class CustomElevatedButton extends StatelessWidget {
           onPressed: disabled ? () {} : onTap,
           style: !disabled
               ? ElevatedButton.styleFrom(
-                  primary: kBottonColor, // background
+                  primary: backgroundColor ?? kBottonColor, // background
                   onPrimary: textColor, // text color
                 )
               : ElevatedButton.styleFrom(
