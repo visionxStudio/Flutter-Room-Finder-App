@@ -40,7 +40,7 @@ class AppLocalizations {
     try {
       //try loading from remote
       final response = await http.get(Uri.parse(
-          'https://raw.githubusercontent.com/2shrestha22/flutter_examples/main/files/{languageCode}.json'
+          'https://raw.githubusercontent.com/visionxStudio/flutter_examples/main/files/{languageCode}.json'
               .replaceFirst('{languageCode}', locale.languageCode)));
       jsonString = response.body;
     } catch (e) {

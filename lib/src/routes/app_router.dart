@@ -5,7 +5,7 @@ import 'package:roomfinder/src/features/authentication/otp_verification/otp_page
 import 'package:roomfinder/src/features/authentication/signup/signup_page.dart';
 import 'package:roomfinder/src/features/splash/roomfinder_splash.dart';
 
-//flutter packages pub run build_runner watch --delete-conflicting-outputs
+// flutter packages pub run build_runner watch --delete-conflicting-outputs
 @MaterialAutoRouter(
   routes: <AutoRoute>[
     AutoRoute(page: RoomFinderSplash, initial: false),

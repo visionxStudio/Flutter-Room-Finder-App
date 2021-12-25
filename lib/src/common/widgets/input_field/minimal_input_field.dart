@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:roomfinder/src/common/constants/constants.dart';
 
 class MinimalInputField extends StatefulWidget {
