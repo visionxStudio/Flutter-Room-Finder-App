@@ -2,7 +2,7 @@ name: roomfinder
 description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to 
-version: 1.0.0+1
+version: 0.0.2+1
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

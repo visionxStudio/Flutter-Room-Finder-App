@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:roomfinder/src/common/service/repo.dart';
+import 'package:roomfinder/src/common/utils/storage/base_storage.dart';
 
 final authRepoProvider = Provider((ref) => AuthRepository());
 
@@ -51,8 +52,20 @@ class AuthRepository extends Repo implements IAuthRepository {
   }
 
   @override
-  Future<void> login({required String email, required String password}) {
-    throw UnimplementedError();
+  Future<void> login({required String email, required String password}) async {
+    await _firebaseAuth
+        .signInWithEmailAndPassword(email: email, password: password)
+        .then((UserCredential userCredential) async {
+      // check if user is null or not
+
+      if (userCredential.user != null) {
+        // save user to the database in here
+        print(userCredential.user!.uid);
+        await shareprefrence.save("userId", userCredential.user!.uid);
+      } else {
+        return;
+      }
+    });
   }
 
   @override
